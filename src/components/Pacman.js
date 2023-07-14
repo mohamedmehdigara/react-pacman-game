@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Pacman = ({ maze }) => {
+const Pacman = ({ maze, gameOver }) => {
   const [position, setPosition] = useState({ x: 1, y: 1 });
   const [score, setScore] = useState(0);
 
@@ -20,36 +20,38 @@ const Pacman = ({ maze }) => {
         newPosition.x = position.x + 1;
       }
 
-      // Check for collision with pellets and ghosts
+      // Check for collision with walls
       if (maze[newPosition.y][newPosition.x] !== 1) {
         setPosition(newPosition);
 
+        // Check for collision with pellets
         if (maze[newPosition.y][newPosition.x] === 0) {
-          // Update score if a pellet is eaten
-          setScore((prevScore) => prevScore + 1);
+          setScore(prevScore => prevScore + 1);
         }
       }
     };
 
-    // Add event listener for key presses
     window.addEventListener('keydown', handleKeyPress);
 
-    // Clean up event listener on component unmount
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
   }, [maze, position]);
 
+  const getRotation = () => {
+    // Calculate the rotation angle based on Pac-Man's direction
+    // Return the rotation angle based on the current direction
+  };
+
   const renderPacman = () => {
-    return (
-      <div
-        className="pacman"
-        style={{
-          top: position.y * 20 + 'px',
-          left: position.x * 20 + 'px',
-        }}
-      ></div>
-    );
+    const rotation = getRotation();
+    const style = {
+      top: position.y * 20 + 'px',
+      left: position.x * 20 + 'px',
+      transform: `rotate(${rotation}deg)`,
+    };
+
+    return <div className="pacman" style={style}></div>;
   };
 
   return (

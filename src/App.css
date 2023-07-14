@@ -47,3 +47,12 @@
   background-color: red;
   transition: top 0.2s ease-in-out, left 0.2s ease-in-out;
 }
+
+.pellet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: yellow;
+  margin: 4px;
+}
+

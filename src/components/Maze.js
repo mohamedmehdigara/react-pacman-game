@@ -24,13 +24,16 @@ const Maze = () => {
               <div
                 key={cellIndex}
                 className={`maze-cell ${cell === 1 ? 'wall' : 'empty'}`}
-              ></div>
+              >
+                {cell === 0 && <div className="pellet"></div>}
+              </div>
             );
           })}
         </div>
       );
     });
   };
+  
 
   return <div className="maze">{renderMaze()}</div>;
 };
