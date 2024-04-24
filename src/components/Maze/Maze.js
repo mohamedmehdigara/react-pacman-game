@@ -1,4 +1,5 @@
 import React from 'react';
+import './Maze.css'; // Import the CSS file for styling
 
 const Maze = () => {
   const maze = [
@@ -33,9 +34,9 @@ const Maze = () => {
       );
     });
   };
-  
 
   return <div className="maze">{renderMaze()}</div>;
 };
 
 export default Maze;
+

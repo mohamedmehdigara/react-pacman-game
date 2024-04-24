@@ -1,0 +1,20 @@
+.ghost-house {
+    position: relative;
+    width: 60px;
+    height: 80px;
+  }
+  
+  .door {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 80px;
+    background-color: #6c541e; /* Brown color */
+  }
+  
+  .door.open {
+    width: 0;
+  }
+  
