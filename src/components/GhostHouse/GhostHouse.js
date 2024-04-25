@@ -23,7 +23,12 @@ const GhostHouse = ({ onGhostEnter, onGhostExit }) => {
 
   return (
     <div className="ghost-house">
-      <div className={`door ${doorOpen ? 'open' : 'closed'}`}></div>
+      {/* Add visual representation of the ghost house */}
+      <div className={`house ${doorOpen ? 'open' : 'closed'}`}>
+        {/* Render the door */}
+        <div className={`door ${doorOpen ? 'open' : 'closed'}`}></div>
+        {/* Optionally add decorations or other elements */}
+      </div>
     </div>
   );
 };

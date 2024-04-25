@@ -26,7 +26,8 @@ const Maze = () => {
                 key={cellIndex}
                 className={`maze-cell ${cell === 1 ? 'wall' : 'empty'}`}
               >
-                {cell === 0 && <div className="pellet"></div>}
+                {/* Render different elements based on cell value */}
+                {renderCellContent(cell)}
               </div>
             );
           })}
@@ -35,8 +36,19 @@ const Maze = () => {
     });
   };
 
+  // Render different elements based on cell value
+  const renderCellContent = (cell) => {
+    switch (cell) {
+      case 0:
+        return <div className="pellet"></div>; // Render pellet for empty cell
+      case 1:
+        return null; // Render nothing for wall cell
+      default:
+        return null; // Default case
+    }
+  };
+
   return <div className="maze">{renderMaze()}</div>;
 };
 
 export default Maze;
-
