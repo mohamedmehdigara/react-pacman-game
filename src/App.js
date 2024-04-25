@@ -3,47 +3,46 @@ import Maze from './components/Maze/Maze';
 import Pacman from './components/Pacman/Pacman';
 import Ghost from './components/Ghost/Ghost';
 import GhostHouse from './components/GhostHouse/GhostHouse';
+import Pellet from './components/Pellet/Pellet';
 import './App.css';
 
 const App = () => {
   const [gameOver, setGameOver] = useState(false);
-  const [ghostsInsideHouse, setGhostsInsideHouse] = useState(0);
 
   const handleGameOver = () => {
     setGameOver(true);
     // Additional game over logic or screen display
   };
 
-  const handleGhostEnter = () => {
-    setGhostsInsideHouse(prevCount => prevCount + 1);
-  };
+  const pacmanPosition = { x: 1, y: 1 }; // Define pacmanPosition
 
-  const handleGhostExit = () => {
-    setGhostsInsideHouse(prevCount => prevCount - 1);
+  const handleGhostEnter = () => {
+    // Define handleGhostEnter function logic
   };
 
   const maze = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-    [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-    [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-    [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-    [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-    [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    // Maze definition
   ];
 
   return (
     <div className="App">
       <h1>Pac-Man Game</h1>
       {gameOver && <h2>Game Over</h2>}
-      <GhostHouse onGhostEnter={handleGhostEnter} onGhostExit={handleGhostExit} />
-      <Maze />
+      <GhostHouse />
+      <Maze>
+        {/* Map through the maze array and render Pellet component for each cell */}
+        {maze.map((row, rowIndex) => (
+          <div key={rowIndex} className="maze-row">
+            {row.map((cell, cellIndex) => (
+              <div key={cellIndex} className={`maze-cell ${cell === 1 ? 'wall' : 'empty'}`}>
+                {cell === 0 && <Pellet />}
+              </div>
+            ))}
+          </div>
+        ))}
+      </Maze>
       <Pacman maze={maze} gameOver={handleGameOver} />
-      <Ghost maze={maze} pacmanPosition={{ x: 1, y: 1 }} gameOver={handleGameOver} />
+      <Ghost maze={maze} pacmanPosition={pacmanPosition} gameOver={handleGameOver} onGhostEnter={handleGhostEnter} />
     </div>
   );
 };

@@ -1,0 +1,12 @@
+.pellet {
+    width: 10px;
+    height: 10px;
+    background-color: #f5de73; /* Yellow color */
+    border-radius: 50%;
+    margin: 2px;
+  }
+  
+  .pellet.eaten {
+    display: none; /* Hide the pellet when it's eaten */
+  }
+  
