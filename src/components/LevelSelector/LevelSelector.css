@@ -1,0 +1,29 @@
+.level-selector {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .level-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .level-button {
+    padding: 10px 20px;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .level-button:hover {
+    background-color: #ddd;
+  }
+  
+  .level-button.selected {
+    background-color: #00bcd4;
+    color: white;
+  }
+  
+  

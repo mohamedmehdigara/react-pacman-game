@@ -7,11 +7,13 @@ import Pellet from './components/Pellet/Pellet';
 import PowerPellet from './components/PowerPellet/PowerPellet';
 import Scoreboard from './components/Scoreboard/Scoreboard';
 import GameOverScreen from './components/GameOverScreen/GameOverScreen';
+import LevelSelector from './components/LevelSelector/LevelSelector';
 import './App.css';
 
 const App = () => {
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
+  const [selectedLevel, setSelectedLevel] = useState('');
 
   const handleGameOver = () => {
     setGameOver(true);
@@ -26,17 +28,37 @@ const App = () => {
 
   const pacmanPosition = { x: 1, y: 1 }; // Define pacmanPosition
 
-  const handleGhostEnter = () => {
+  const handleGhostEnter = (ghostPosition) => {
     // Logic when ghost enters certain condition
+    console.log(`Ghost entered position: ${ghostPosition}`);
+    // Example: Decrease score when ghost enters certain position
+    setScore(prevScore => prevScore - 10);
   };
-
-  const handleGhostExit = () => {
+  
+  const handleGhostExit = (ghostPosition) => {
     // Logic when ghost exits certain condition
+    console.log(`Ghost exited position: ${ghostPosition}`);
   };
-
+  
   const maze = [
-    // Maze definition
+    // Example maze definition (0 for empty space, 1 for wall)
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+    [1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1],
+    [1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ];
+  
+
+  const handleLevelSelect = (level) => {
+    setSelectedLevel(level);
+  };
 
   return (
     <div className="App">
@@ -48,7 +70,6 @@ const App = () => {
           <Scoreboard score={score} />
           <GhostHouse onGhostEnter={handleGhostEnter} onGhostExit={handleGhostExit} />
           <Maze>
-            {/* Map through the maze array and render Pellet or PowerPellet component for each cell */}
             {maze.map((row, rowIndex) => (
               <div key={rowIndex} className="maze-row">
                 {row.map((cell, cellIndex) => (
@@ -59,14 +80,19 @@ const App = () => {
               </div>
             ))}
           </Maze>
-          <Pacman maze={maze} gameOver={handleGameOver} onScoreUpdate={setScore} />
+          <Pacman
+            maze={maze}
+            gameOver={handleGameOver}
+            onScoreUpdate={setScore}
+          />
           <Ghost
             maze={maze}
             pacmanPosition={pacmanPosition}
             gameOver={handleGameOver}
-            onGhostEnter={handleGhostEnter} // Pass onGhostEnter as a prop
-            onGhostExit={handleGhostExit} // Pass onGhostExit as a prop
+            onGhostEnter={handleGhostEnter}
+            onGhostExit={handleGhostExit}
           />
+          <LevelSelector onSelect={handleLevelSelect} selectedLevel={selectedLevel} />
         </>
       )}
     </div>
