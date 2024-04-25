@@ -5,13 +5,14 @@ import Ghost from './components/Ghost/Ghost';
 import GhostHouse from './components/GhostHouse/GhostHouse';
 import Pellet from './components/Pellet/Pellet';
 import PowerPellet from './components/PowerPellet/PowerPellet';
-import BonusItem from './components/BonusItem/BonusItem'; // Import BonusItem component
+import BonusItem from './components/BonusItem/BonusItem';
 import Scoreboard from './components/Scoreboard/Scoreboard';
 import GameOverScreen from './components/GameOverScreen/GameOverScreen';
 import LevelSelector from './components/LevelSelector/LevelSelector';
-import './App.css';
 import Timer from './components/Timer/Timer';
 import TutorialOverlay from './components/TutorialOverlay/TutorialOverlay';
+import Animations from './components/Animations/Animations'; // Import Animations component
+import './App.css';
 
 const App = () => {
   const [gameOver, setGameOver] = useState(false);
@@ -84,6 +85,7 @@ const App = () => {
             onGhostExit={handleGhostExit} // Pass onGhostExit as a prop
           />
           <LevelSelector onSelect={handleLevelSelect} selectedLevel={selectedLevel} />
+          <Animations /> {/* Render the Animations component */}
         </>
       )}
     </div>
