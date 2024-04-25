@@ -1,0 +1,12 @@
+.bonus-item {
+    width: 20px;
+    height: 20px;
+    background-color: yellow; /* Or any other color you choose */
+    border-radius: 50%; /* Make it circular */
+    position: absolute; /* Position within the maze */
+  }
+  
+  .bonus-item.collected {
+    display: none; /* Hide the bonus item when it's collected */
+  }
+  
