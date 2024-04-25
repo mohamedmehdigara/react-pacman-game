@@ -7,10 +7,13 @@ const Ghost = ({ maze, pacmanPosition, gameOver, onGhostEnter }) => {
     const moveGhost = () => {
       // Ensure all necessary variables are defined and have valid values
       if (!maze || !pacmanPosition || !position || maze.length === 0) {
-        console.error("Missing or invalid variables.");
+        console.error("Missing or invalid variables:");
+        console.error("maze:", maze);
+        console.error("pacmanPosition:", pacmanPosition);
+        console.error("position:", position);
         return;
       }
-
+    
       // Implement ghost movement logic
       const newPosition = { ...position }; // Copying the current position
     
@@ -44,9 +47,10 @@ const Ghost = ({ maze, pacmanPosition, gameOver, onGhostEnter }) => {
     
       // Example: Check if the ghost enters a certain condition and trigger onGhostEnter
       if (newPosition.x === pacmanPosition.x && newPosition.y === pacmanPosition.y) {
-        // Assuming onGhostEnter is called with some parameters
-        onGhostEnter(/* Pass relevant parameters */);
+        // Call onGhostEnter with relevant parameters
+        onGhostEnter({ ghostPosition: newPosition, pacmanPosition });
       }
+      
     };
     
     const intervalId = setInterval(moveGhost, 500);
