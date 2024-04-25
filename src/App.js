@@ -4,6 +4,7 @@ import Pacman from './components/Pacman/Pacman';
 import Ghost from './components/Ghost/Ghost';
 import GhostHouse from './components/GhostHouse/GhostHouse';
 import Pellet from './components/Pellet/Pellet';
+import PowerPellet from './components/PowerPellet/PowerPellet';
 import './App.css';
 
 const App = () => {
@@ -17,7 +18,11 @@ const App = () => {
   const pacmanPosition = { x: 1, y: 1 }; // Define pacmanPosition
 
   const handleGhostEnter = () => {
-    // Define handleGhostEnter function logic
+    // Logic when ghost enters certain condition
+  };
+
+  const handleGhostExit = () => {
+    // Logic when ghost exits certain condition
   };
 
   const maze = [
@@ -30,19 +35,25 @@ const App = () => {
       {gameOver && <h2>Game Over</h2>}
       <GhostHouse />
       <Maze>
-        {/* Map through the maze array and render Pellet component for each cell */}
+        {/* Map through the maze array and render Pellet or PowerPellet component for each cell */}
         {maze.map((row, rowIndex) => (
           <div key={rowIndex} className="maze-row">
             {row.map((cell, cellIndex) => (
               <div key={cellIndex} className={`maze-cell ${cell === 1 ? 'wall' : 'empty'}`}>
-                {cell === 0 && <Pellet />}
+                {cell === 0 ? <Pellet /> : cell === 2 ? <PowerPellet eaten={false} /> : null}
               </div>
             ))}
           </div>
         ))}
       </Maze>
       <Pacman maze={maze} gameOver={handleGameOver} />
-      <Ghost maze={maze} pacmanPosition={pacmanPosition} gameOver={handleGameOver} onGhostEnter={handleGhostEnter} />
+      <Ghost
+        maze={maze}
+        pacmanPosition={pacmanPosition}
+        gameOver={handleGameOver}
+        onGhostEnter={handleGhostEnter} // Pass onGhostEnter as a prop
+        onGhostExit={handleGhostExit} // Pass onGhostExit as a prop
+      />
     </div>
   );
 };

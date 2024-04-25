@@ -1,0 +1,12 @@
+.power-pellet {
+    width: 20px;
+    height: 20px;
+    background-color: #ff5733; /* Orange color */
+    border-radius: 50%;
+    margin: 2px;
+  }
+  
+  .power-pellet.eaten {
+    display: none; /* Hide the power pellet when it's eaten */
+  }
+  
