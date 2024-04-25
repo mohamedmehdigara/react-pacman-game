@@ -33,7 +33,7 @@ const App = () => {
     <div className="App">
       <h1>Pac-Man Game</h1>
       {gameOver && <h2>Game Over</h2>}
-      <GhostHouse />
+      <GhostHouse onGhostEnter={handleGhostEnter} onGhostExit={handleGhostExit} />
       <Maze>
         {/* Map through the maze array and render Pellet or PowerPellet component for each cell */}
         {maze.map((row, rowIndex) => (
