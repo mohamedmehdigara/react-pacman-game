@@ -10,11 +10,18 @@ import Scoreboard from './components/Scoreboard/Scoreboard';
 import GameOverScreen from './components/GameOverScreen/GameOverScreen';
 import LevelSelector from './components/LevelSelector/LevelSelector';
 import './App.css';
+import Timer from './components/Timer/Timer';
+import TutorialOverlay from './components/TutorialOverlay/TutorialOverlay';
 
 const App = () => {
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [selectedLevel, setSelectedLevel] = useState('');
+  const [showTutorial, setShowTutorial] = useState(true);
+
+  const handleCloseTutorial = () => {
+    setShowTutorial(false);
+  };
 
   const handleGameOver = () => {
     setGameOver(true);
@@ -53,6 +60,8 @@ const App = () => {
       ) : (
         <>
           <Scoreboard score={score} />
+          <Timer/>
+          {showTutorial && <TutorialOverlay onClose={handleCloseTutorial} />}
           <GhostHouse onGhostEnter={handleGhostEnter} onGhostExit={handleGhostExit} />
           <Maze>
             {/* Map through the maze array and render Pellet, PowerPellet, or BonusItem component for each cell */}

@@ -1,0 +1,49 @@
+/* TutorialOverlay.css */
+.tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .tutorial-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .tutorial-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .tutorial-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .tutorial-content ul {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .tutorial-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .tutorial-content button:hover {
+    background-color: #0056b3;
+  }
+  
