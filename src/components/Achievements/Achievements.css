@@ -1,0 +1,22 @@
+.achievements-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .achievement {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .achievement-title {
+    font-weight: bold;
+  }
+  
+  .achievement-description {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  
