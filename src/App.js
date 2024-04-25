@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Achievements from './components/Achievements/Achievements'; // Import the Achievements component
 import Maze from './components/Maze/Maze';
 import Pacman from './components/Pacman/Pacman';
 import Ghost from './components/Ghost/Ghost';
@@ -13,6 +12,8 @@ import LevelSelector from './components/LevelSelector/LevelSelector';
 import Timer from './components/Timer/Timer';
 import TutorialOverlay from './components/TutorialOverlay/TutorialOverlay';
 import Animations from './components/Animations/Animations';
+import Achievements from './components/Achievements/Achievements';
+import PauseMenu from './components/PauseMenu/PauseMenu'; // Import the PauseMenu component
 import './App.css';
 
 const App = () => {
@@ -20,7 +21,9 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [selectedLevel, setSelectedLevel] = useState('');
   const [showTutorial, setShowTutorial] = useState(true);
-  const [unlockedAchievements, setUnlockedAchievements] = useState([]); // State to track unlocked achievements
+  const [gamePaused, setGamePaused] = useState(false);
+  const [unlockedAchievements, setUnlockedAchievements] = useState([]); // Define unlockedAchievements
+
 
   const handleCloseTutorial = () => {
     setShowTutorial(false);
@@ -35,6 +38,18 @@ const App = () => {
     setGameOver(false);
     setScore(0);
     // Additional logic for restarting the game
+  };
+
+  const handlePause = () => {
+    setGamePaused(true);
+  };
+
+  const handleResume = () => {
+    setGamePaused(false);
+  };
+
+  const handleQuit = () => {
+    // Logic to quit the game
   };
 
   const pacmanPosition = { x: 1, y: 1 }; // Define pacmanPosition
@@ -55,16 +70,13 @@ const App = () => {
     setSelectedLevel(level);
   };
 
-  // Function to unlock achievements based on game events
-  const unlockAchievement = (achievement) => {
-    setUnlockedAchievements([...unlockedAchievements, achievement]);
-  };
-
   return (
     <div className="App">
       <h1>Pac-Man Game</h1>
       {gameOver ? (
         <GameOverScreen score={score} onRestart={handleRestart} />
+      ) : gamePaused ? (
+        <PauseMenu onResume={handleResume} onRestart={handleRestart} onQuit={handleQuit} />
       ) : (
         <>
           <Scoreboard score={score} />
