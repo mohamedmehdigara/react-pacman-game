@@ -47,12 +47,12 @@ const Ghost = ({ maze, pacmanPosition, gameOver, onGhostEnter }) => {
     
       // Example: Check if the ghost enters a certain condition and trigger onGhostEnter
       if (newPosition.x === pacmanPosition.x && newPosition.y === pacmanPosition.y) {
-        // Call onGhostEnter with relevant parameters
-        onGhostEnter({ ghostPosition: newPosition, pacmanPosition });
+        // Assuming onGhostEnter is called with some parameters
+        onGhostEnter({ caughtPacman: true, ghostPosition: newPosition });
       }
       
     };
-    
+     
     const intervalId = setInterval(moveGhost, 500);
 
     return () => {

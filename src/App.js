@@ -5,10 +5,13 @@ import Ghost from './components/Ghost/Ghost';
 import GhostHouse from './components/GhostHouse/GhostHouse';
 import Pellet from './components/Pellet/Pellet';
 import PowerPellet from './components/PowerPellet/PowerPellet';
+import Scoreboard from './components/Scoreboard/Scoreboard';
 import './App.css';
 
 const App = () => {
   const [gameOver, setGameOver] = useState(false);
+  const [currentScore, setCurrentScore] = useState(0); // Define currentScore state
+
 
   const handleGameOver = () => {
     setGameOver(true);
@@ -54,6 +57,8 @@ const App = () => {
         onGhostEnter={handleGhostEnter} // Pass onGhostEnter as a prop
         onGhostExit={handleGhostExit} // Pass onGhostExit as a prop
       />
+      <Scoreboard score={currentScore} />
+
     </div>
   );
 };
