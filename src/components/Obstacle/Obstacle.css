@@ -1,0 +1,26 @@
+/* Obstacle.css */
+.obstacle {
+    width: 20px;
+    height: 20px;
+    background-color: gray;
+    border: 2px solid black;
+  }
+  
+  .obstacle.wall {
+    background-color: darkgray;
+  }
+  
+  .obstacle.moving-barrier {
+    background-color: yellow;
+    animation: move 3s linear infinite alternate; /* Example animation */
+  }
+  
+  @keyframes move {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100px); /* Example translation */
+    }
+  }
+  

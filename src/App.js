@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import Maze from './components/Maze/Maze';
 import Pacman from './components/Pacman/Pacman';
@@ -15,6 +16,7 @@ import TutorialOverlay from './components/TutorialOverlay/TutorialOverlay';
 import Animations from './components/Animations/Animations';
 import Achievements from './components/Achievements/Achievements';
 import PauseMenu from './components/PauseMenu/PauseMenu';
+import Obstacle from './components/Obstacle/Obstacle'; // Import Obstacle component
 
 import './App.css';
 
@@ -76,7 +78,7 @@ const App = () => {
               <div key={rowIndex} className="maze-row">
                 {row.map((cell, cellIndex) => (
                   <div key={cellIndex} className={`maze-cell ${cell === 1 ? 'wall' : 'empty'}`}>
-                    {cell === 0 ? <Pellet /> : cell === 2 ? <PowerPellet eaten={false} /> : cell === 3 ? <PowerUp type="speedBoost" /> : cell === 4 ? <BonusItem /> : null}
+                    {cell === 0 ? <Pellet /> : cell === 2 ? <PowerPellet eaten={false} /> : cell === 3 ? <PowerUp type="speedBoost" /> : cell === 4 ? <BonusItem /> : cell === 5 ? <Obstacle type="wall" /> : null}
                   </div>
                 ))}
               </div>
