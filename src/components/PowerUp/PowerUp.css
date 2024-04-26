@@ -1,0 +1,32 @@
+.power-up {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: yellow;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+  
+  .speedBoost {
+    background-color: blue;
+    color: white;
+  }
+  
+  .invincibility {
+    background-color: green;
+    color: white;
+  }
+  
+  .bonusMultiplier {
+    background-color: orange;
+    color: white;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
