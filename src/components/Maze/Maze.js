@@ -42,7 +42,7 @@ const Maze = () => {
       case 0:
         return <div className="pellet"></div>; // Render pellet for empty cell
       case 1:
-        return null; // Render nothing for wall cell
+        return <div className="wall"></div>; // Render wall for wall cell
       default:
         return null; // Default case
     }
